@@ -69,20 +69,31 @@ class DB{
             $sql = $sql . " where `id` = '$id'";
         }
         return $this->pdo->exec($sql);
+    }    
+    public function count(...$arg){
+        $sql="select count(*) from $this->table";
+        if(isset($arg[0])){
+            if(is_array($arg[0])){
+                $tmp=$this->arrayToSqlArray($arg[0]);
+                $sql=$sql . " where " . join(" && ",$tmp);
+            }else{
+                $sql=$sql . $arg[0];
+            }           
+        }
+
+        return $this->pdo->query($sql)->fetchColumn();
     }
-    public function sum(){
+    public function sum($col,...$arg){
+        $sql="select sum($col) from $this->table";
+        return $this->pdo->query($sql)->fetchColumn();
+    }
+    public function max($col){
 
     }
-    public function count(){
+    public function min($col){
 
     }
-    public function max(){
-
-    }
-    public function min(){
-
-    }
-    public function avg(){
+    public function avg($col){
 
     }
     
@@ -114,10 +125,11 @@ $bot=$db->all();
 //$db->del(7);
 //print_r($db->all());
 //$db->save(['bottom'=>"2022頁尾版權"]);
-$row=$db->find(1);
-print_r($row);
+// $row=$db->find(1);
+// print_r($row);
 
-$row['bottom']="2023科技大學版權所有";
-print_r($row);
+// $row['bottom']="2023科技大學版權所有";
+// print_r($row);
 // $db->save($row);
+echo $db->sum('price');
 
