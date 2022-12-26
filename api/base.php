@@ -44,8 +44,19 @@ class DB{
 
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function save(){
-
+    public function save($array){
+        if(isset($array['id'])){
+            // 陣列有id 更新
+            $id=$array['id'];
+            unset($array['id']);
+            $tmp=$this->arrayToSqlArray(($array));
+            $sql="update $this->table set ".join(",",$tmp)." where `id`='$id'";
+        }else{
+            // 陣列沒有id 新增
+                $cols = array_keys($array);
+                $sql = "insert into $this->table (`".join("`,`",$cols)."`) values('".join("','",$array)."')";
+        }
+        return $this->pdo->exec($sql);
     }
     public function del($id){
         $sql="delete from $this->table";
@@ -82,18 +93,31 @@ class DB{
         return $tmp;
     }
 }
-function dd(){
-
+function dd($array){
+    echo "<pre>";
+    print_r($array);
+    echo "</pre>";
 }
-function to(){
-
+function to($url){
+    header(("location".$url));
 }
-function q(){
+function q($sql){
+    $dsn="mysql:host=localhost;charset=utf8;dbname=db25";
+    $pdo=new PDO($dsn,'root','');
 
+    $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
 $db=new DB('bottom');
 $bot=$db->all();
-print_r($bot);
-// $db->del(2);
-print_r($db->all());
+// print_r($bot);
+//$db->del(7);
+//print_r($db->all());
+//$db->save(['bottom'=>"2022頁尾版權"]);
+$row=$db->find(1);
+print_r($row);
+
+$row['bottom']="2023科技大學版權所有";
+print_r($row);
+// $db->save($row);
+
