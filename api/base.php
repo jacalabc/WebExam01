@@ -143,27 +143,4 @@ function q($sql)
 
     $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
-
-$db = new DB('bottom');
-$bot=$db->all();
-// print_r($bot);
-// $db->del(3);
-//print_r($db->all());
-// $db->save(['bottom'=>"2022頁尾版權"]);
-// $row=$db->find(1);
-// print_r($row);
-echo "資料總數為:".$db->count(["bottom"=>"2022頁尾版權"]);
-echo "<br>";
-echo "資料加總為:".$db->sum('price'," where id in(1,8)");
-echo "<br>";
-echo "價格最大為:".$db->max('price');
-echo "<br>";
-echo "id最小為:".$db->min('id');
-echo "<br>";
-echo "平均價格為:".$db->avg('price');
-echo "<br>";
-echo "<br>";
-// $row['bottom']="2023科技大學版權所有";
-// print_r($row);
-// $db->save($row);
-// echo $db->sum('price');
+$Bottom=new DB('bottom');
