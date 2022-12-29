@@ -11,6 +11,6 @@
 </table>
     <div>
         <input type="submit" value="新增">
-        <input type="submit" value="重置">
+        <input type="reset" value="重置">
     </div>
 </form>
