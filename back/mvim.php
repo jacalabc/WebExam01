@@ -2,7 +2,7 @@
     <p class="t cent botli">動畫圖片管理</p>
     <!-- <form method="post" target="back" action="?do=tii"> -->
     <form method="post" action="./api/edit.php">
-        <table width="100%" class="cent">
+        <table width="100%" class='cent'>
             <tbody>
                 <tr class="yel">
                     <td width="70%">動畫圖片</td>
@@ -26,9 +26,10 @@
                         <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
                     </td>
                     <td>
-                        <input type="button"
-                               value="更換動畫"
-                               onclick="op('#cover','#cvr','./modal/upload_mvim.php?id=<?=$row['id'];?>')">
+                        <input type="button" 
+                              value="更換動畫"
+                            onclick="op('#cover','#cvr','./modal/upload_mvim.php?id=<?=$row['id'];?>')" >
+
                         <input type="hidden" name="id[]" value="<?=$row['id'];?>">
                     </td>
                 </tr>

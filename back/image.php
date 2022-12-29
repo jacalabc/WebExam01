@@ -26,9 +26,10 @@
                         <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
                     </td>
                     <td>
-                        <input type="button"
-                               value="更換圖片"
-                               onclick="op('#cover','#cvr','./modal/upload_image.php?id=<?=$row['id'];?>')">
+                        <input type="button" 
+                              value="更換圖片"
+                            onclick="op('#cover','#cvr','./modal/upload_image.php?id=<?=$row['id'];?>')" >
+
                         <input type="hidden" name="id[]" value="<?=$row['id'];?>">
                     </td>
                 </tr>
