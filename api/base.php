@@ -149,7 +149,7 @@ function to($url){
 }
 
 function q($sql){
-    $dsn="mysql:host=localhost;charset=utf8;dbname=db04";
+    $dsn="mysql:host=localhost;charset=utf8;dbname=db25";
     $pdo=new PDO($dsn,'root','');
 
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -164,3 +164,4 @@ $Mvim=new DB('mvim');
 $Image=new DB('image');
 $News=new DB('news');
 $Admin=new DB('admin');
+// $Menu=new DB('menu');
