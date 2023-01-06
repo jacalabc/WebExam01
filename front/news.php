@@ -11,7 +11,7 @@
 			</marquee>
 				<div style="height:32px; display:block;"></div>
 				<!--正中央-->
-
+				<h3>更多最新消息</h3>
 					<?php
 						$all=$News->count(['sh'=>1]);
 						$div=5;
